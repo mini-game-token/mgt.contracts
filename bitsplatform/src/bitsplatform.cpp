@@ -134,6 +134,7 @@ namespace egame {
       eosio_assert(itr->status == 0, "the account in the game or locked cannot be withdraw.");
 
       eosio_assert( itr->point >= quantity, "insufficient balance" );
+      eosio_assert( quantity <= _global.total_point - _global.income, "invalid quantity" );
 
       //check point and SYS
       eosio_assert( check_point(), "platform data verification failed." );
@@ -148,7 +149,7 @@ namespace egame {
       _global.total_withdraw += sys;
       //updata user data
       _users.modify( itr, same_payer, [&]( auto& acnt ) {
-         eosio_assert( acnt.point >= qt, "insufficient balance" );
+         //eosio_assert( acnt.point >= qt, "insufficient balance" );
          acnt.point -= qt;
          acnt.withdraw_cot += qt;
          acnt.UpdateLastTime( _bon_status.paying );
