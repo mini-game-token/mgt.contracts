@@ -8,7 +8,7 @@ using namespace eosio;
 namespace egame {
 
    #define POINT symbol(symbol_code("POINT"), 0)
-   #define SYS symbol(symbol_code("EOS"), 4)
+   #define SYS symbol(symbol_code("${SYS_NAME}"), 4)
    #define MGT symbol(symbol_code("MGT"), 4)
 
    #define GAME_PLATFORM ("bitsplatform"_n)

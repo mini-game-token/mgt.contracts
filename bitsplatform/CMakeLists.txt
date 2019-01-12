@@ -1,3 +1,6 @@
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/include/data.hpp.in ${CMAKE_CURRENT_SOURCE_DIR}/src/include/data.hpp)
+
 add_contract(bitsplatform bitsplatform ${CMAKE_CURRENT_SOURCE_DIR}/src/bitsplatform.cpp)
 target_include_directories(bitsplatform.wasm
    PUBLIC

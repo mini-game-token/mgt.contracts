@@ -9,17 +9,36 @@ SVR_URL=https://eosx.eosinfra.io/
 ACTIVE_PUB="EOS5nVzU2u2Zhq1wp4z5W9tVvLoSCgzg37DEkifV7VFSiY86WVzXw"
 GAME_PUB="EOS5PTUVpeSBNGWqqrUM5WeDvkeqYC6N6YfL8CbNF81BNMQu8XZwv"
 
-if [ -z $1 ];then
-   echo "You can set an API address"
-else
-   SVR_URL=$1
+function help()
+{
+   printf "Help:\\n\\t-u <SVR_URL> api url"
+   printf "\\n\\t-g <GAME_PUB> the game public key\\n"
+   exit 1
+}
+
+if [ $# -ne 0 ];then
+   while getopts ":u:g:h" opt; do
+      case "${opt}" in
+         u)
+            SVR_URL="${OPTARG}"
+         ;;
+         g)
+            GAME_PUB="${OPTARG}"
+         ;;
+         h)
+            help
+            exit 1
+         ;;
+         ?)
+            help
+            exit 1
+         ;;
+      esac
+   done
 fi
 
-if [ -z $2 ];then
-   echo "You can set an game public key"
-else
-   GAME_PUB=$2
-fi
+printf "SVR_URL: %s\\n\\n" "${SVR_URL}"
+printf "GAME_PUB: %s\\n\\n" "${GAME_PUB}"
 
 JSON=`cleos -u ${SVR_URL} get account bitsplatform -j`
 JSON=${JSON#*'"perm_name": "active",'}

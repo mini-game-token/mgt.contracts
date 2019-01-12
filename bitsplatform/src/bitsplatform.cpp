@@ -304,13 +304,6 @@ namespace egame {
       require_auth( _self );
       _global.pause_recharge = false;
       _global.pause_withdraw = false;
-      auto s=current_time();
-      for(int32_t i=0;i<10000;i++){
-
-      }
-      auto e=current_time();
-      print(s);
-      print(e);
       check_bonus();
    }
 
