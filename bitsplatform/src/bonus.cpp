@@ -19,7 +19,7 @@ namespace egame {
    bool platform::check_supply_rate( const TokenStat& ts )
    {
       if( ts.supply.amount <= 0 ) return false;
-      int16_t msr = int16_t(double(ts.supply.amount) / double(ts.max_supply.amount) * 100.00f);
+      int16_t msr = int16_t(double(ts.supply.amount) / double(ts.max_supply.amount) * 1000.00f);
       return msr >= _bon_status.min_start_rate;
    }
 
@@ -63,7 +63,7 @@ namespace egame {
       auto existing = statstable.find( MGT.code().raw() );
       if( existing != statstable.end() ) {
          const auto& ts = *existing;
-         int16_t msr = int16_t(double(ts.supply.amount) / double(ts.max_supply.amount) * 100.00f);
+         int16_t msr = int16_t(double(ts.supply.amount) / double(ts.max_supply.amount) * 1000.00f);
          if( msr >= _bon_status.min_start_rate && _bon_status.bonus_pool.amount >= _bon_status.min_start.amount &&
             current_time() - _bon_status.last_dividend_time >= _bon_status.min_interval ) {
             _bon_status.paying = true;

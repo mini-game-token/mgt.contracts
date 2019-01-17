@@ -13,9 +13,9 @@ namespace egame {
    struct [[eosio::table("bonstatus"), eosio::contract("bitsplatform")]] BonusStatus {
 
       /**
-       * The percentage of distributed tokens that initiate bonus
+       * The percentage of distributed tokens that initiate bonus 1/1000
        */ 
-      uint16_t min_start_rate = 3;
+      uint16_t min_start_rate = 5;
 
       /**
        * the platform revenue into the bonus pool ratio

@@ -92,9 +92,9 @@ namespace egame {
          BonusStatusSingleton _bon_status_table;
          BonusStatus get_default_bonus_status() {
             BonusStatus bs;
-            bs.min_start = asset( 300000, POINT );
+            bs.min_start = asset( 50000, POINT );
             bs.bonus_pool.symbol = POINT;
-            bs.min_start_rate = 3;
+            bs.min_start_rate = 5;
             bs.pool_rate = 50;
             //bs.min_interval = 24;
             return bs;

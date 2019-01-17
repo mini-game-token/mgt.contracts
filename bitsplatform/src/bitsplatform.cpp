@@ -195,8 +195,8 @@ namespace egame {
          //check settlement
          eosio_assert( data.size() >= 1, "invalid settlement data" );
 
-         winner = asset( 0, SYS );
-         loser = asset( 0, SYS );
+         winner = asset( 0, g_itr->income_cot.symbol );
+         loser = asset( 0, g_itr->income_cot.symbol );
       }
       
       for( auto& s : data ) {

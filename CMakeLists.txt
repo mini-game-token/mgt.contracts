@@ -37,7 +37,6 @@ add_subdirectory(bitsplatform)
 #add_subdirectory(bitthirtymax)
 #add_subdirectory(mgtthirtymax)
 
-
 if (APPLE)
    set(OPENSSL_ROOT "/usr/local/opt/openssl")
 elseif (UNIX)
