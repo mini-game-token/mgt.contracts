@@ -127,7 +127,8 @@ namespace egame {
 
       eosio_assert( quantity.symbol == POINT, "asset must be point" );//only point
       eosio_assert( quantity.is_valid(), "invalid quantity" );
-      eosio_assert( quantity.amount > 0, "must withdraw positive quantity" );
+      //eosio_assert( quantity.amount > 0, "must withdraw positive quantity" );
+      eosio_assert( quantity.amount >= 1000, "greater than or equal to 1000");
 
       auto itr = _users.find( to.value );
       eosio_assert(itr != _users.end(), "the account does not exist on the platform.");
