@@ -375,6 +375,7 @@ namespace egame {
          _g.income_cot = g.income_cot;
          _g.base_bet = g.base_bet;
       });
+      _global.total_games +=1;
       check_bonus();
    }
 
@@ -432,6 +433,7 @@ namespace egame {
       eosio_assert( itr != _games.end(), "the game does not exist on the platform.");
 
       _games.erase( itr );
+      _global.total_games -=1;
       check_bonus();
    }
 
