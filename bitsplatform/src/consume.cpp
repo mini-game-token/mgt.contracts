@@ -85,7 +85,9 @@ namespace egame {
 
       _con_status.SetPool( value );
       
+      statstable.modify( st, same_payer, [&]( auto& s ) {
+         s.supply -= value;
+      });
       sub_balance( user, value );
-      add_balance( _self, value, _self );
    }
 }
