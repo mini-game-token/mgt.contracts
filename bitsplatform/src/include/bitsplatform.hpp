@@ -204,6 +204,15 @@ namespace egame {
             eosio_assert( itr->status == 0, "this account has been locked" );
             eosio_assert( itr->game_id.value == 0, "already in the game" );
          }
+         static bool CheckUserPoint( const name& tokenContractAccount, const name& account, const game& game ) {
+            user_index users( tokenContractAccount, tokenContractAccount.value );
+            auto uItr = users.find( account.value );
+            if( uItr != users.end() ) {
+               auto minpoint = max( game.min_point, game.fee_fixed );
+               return uItr->point >= minpoint;
+            }
+            return false;
+         }
          static bool IsChinese(const string& str) {
             bool chinese = true;
             for(int i = 0; i < str.length(); i++){

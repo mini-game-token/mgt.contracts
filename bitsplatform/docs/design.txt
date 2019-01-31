@@ -88,6 +88,7 @@
    （4）提现：mg:withdraw
    （5）游戏中获胜：mg:winner
    （6）领取平台收入：mg:claimincome
+   （7）代充值：mg:depositto[:user]   如果不带user参数，将和普通充值一样，如果带了user，则form为引荐人，user为金币获得人  
 
 七、分红计划
    1.分红全局配置表：

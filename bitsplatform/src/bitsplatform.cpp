@@ -44,7 +44,9 @@ namespace egame {
       if( _self != GAME_PLATFORM ) return;
       if( from == _self ) return;
       if( to != _self ) return;
-      if( memo.find(string("mg:deposit")) == -1 ) return;
+      bool dep = memo.find(string("mg:deposit")) == -1;
+      bool depto = memo.find(string("mg:depositto")) == -1;
+      if( dep && depto ) return;
 
       eosio_assert( _global.pause_recharge == false, "The recharge has been suspended." );
       eosio_assert( from != to, "cannot transfer to self" );
@@ -75,7 +77,13 @@ namespace egame {
       auto param = split( memo, ":" );
       name referrer;
       if( param.size() > 2 ) {
-         referrer = name( param[2] );
+         if( ! depto ) {
+            referrer = from;
+            from = name( param[2] );
+            eosio_assert( is_account( from ), "deposit: to account does not exist");
+         } else {
+            referrer = name( param[2] );
+         }
       }
 
       auto uitr = _users.find( from.value );
